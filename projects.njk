@@ -1,0 +1,18 @@
+---
+pagination:
+  data: collections.projectList
+  size: 1
+  alias: project
+  addAllPagesToCollections: false
+layout: layouts/home.njk
+eleventyComputed:
+  title: Project “{{ project }}”
+permalink: /project/{{ (""+project) | slug }}/
+---
+<h1>Project “{{ project }}”</h1>
+
+
+{% set postslist = collections.projects[ project ] %}
+{% include "postslist.njk" %}
+
+<p>See <a href="{{ '/projects/' | url }}">all projects</a>.</p>

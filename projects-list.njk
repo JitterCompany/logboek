@@ -1,0 +1,15 @@
+---
+permalink: /projects/
+layout: layouts/home.njk
+---
+<h1>Projects</h1>
+
+<ul>
+{% for project in collections.projectList %}
+  {% set projectUrl %}/project/{{ (""+project) | slug }}/{% endset %}
+<li>
+  {{project}}
+  <a href="{{ projectUrl | url }}" class="post-tag">{{ project }}</a>
+</li>
+{% endfor %}
+<ul>

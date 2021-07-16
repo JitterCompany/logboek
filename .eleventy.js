@@ -57,6 +57,42 @@ module.exports = function(eleventyConfig) {
     return filterTagList([...tagSet]);
   });
 
+
+
+  eleventyConfig.addCollection("projectList", function(collection) {
+    let projectSet = new Set();
+    collection.getAll().forEach(item => {
+      let project = item.data.project;
+      if (project) {
+        projectSet.add(project)
+      }
+    });
+    console.log("==> collections ", eleventyConfig.getCollections());
+    return [...projectSet].sort();
+  });
+
+  makeProjects = function(collection) {
+    let projects = {};
+
+    collection.getAllSorted().forEach(item => {
+      let project = item.data.project;
+
+      if (Array.isArray(projects[project])) {
+          //  category array exists? Just push
+          projects[project].push(item);
+      } else {
+          //  Otherwise create it and
+          //  make `item` the first, uh, item.
+          projects[project] = [item];
+      }
+    });
+
+    console.log("projects", projects);
+    return projects
+  }
+
+  eleventyConfig.addCollection("projects", makeProjects)
+
   // Copy the `img` and `css` folders to the output
   eleventyConfig.addPassthroughCopy("img");
   eleventyConfig.addPassthroughCopy("css");
@@ -90,6 +126,15 @@ module.exports = function(eleventyConfig) {
     ui: false,
     ghostMode: false
   });
+
+  eleventyConfig.addFilter("log", (arr) => {
+    console.log('debug data:', arr);
+  });
+
+  // eleventyConfig.addFilter("debugger", (...args) => {
+  //   console.log(...args)
+  //   debugger;
+  // })
 
   return {
     // Control which files Eleventy will process
