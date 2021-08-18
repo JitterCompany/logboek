@@ -67,7 +67,6 @@ module.exports = function(eleventyConfig) {
         projectSet.add(project)
       }
     });
-    console.log("==> collections ", eleventyConfig.getCollections());
     return [...projectSet].sort();
   });
 
@@ -87,7 +86,6 @@ module.exports = function(eleventyConfig) {
       }
     });
 
-    console.log("projects", projects);
     return projects
   }
 
@@ -127,14 +125,9 @@ module.exports = function(eleventyConfig) {
     ghostMode: false
   });
 
-  eleventyConfig.addFilter("log", (arr) => {
-    console.log('debug data:', arr);
+  eleventyConfig.addFilter("log", (...args) => {
+    console.log(...args);
   });
-
-  // eleventyConfig.addFilter("debugger", (...args) => {
-  //   console.log(...args)
-  //   debugger;
-  // })
 
   return {
     // Control which files Eleventy will process

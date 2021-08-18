@@ -1,10 +1,11 @@
 ---
 layout: layouts/post.njk
-title: About Me
+title: About
 templateClass: tmpl-post
 eleventyNavigation:
-  key: About Me
-  order: 3
+  key: About
+  order: 6
 ---
 
-I am a person that writes stuff.
+
+{% include "README.md" %}
