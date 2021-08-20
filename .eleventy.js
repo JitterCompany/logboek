@@ -42,7 +42,9 @@ module.exports = function(eleventyConfig) {
   });
 
   function filterTagList(tags) {
-    return (tags || []).filter(tag => ["all", "nav", "post", "posts"].indexOf(tag) === -1);
+    return (tags || [])
+      .filter(tag => ["all", "nav", "post", "posts"].indexOf(tag) === -1)
+      .map(tag => (''+tag).toLowerCase());
   }
 
   eleventyConfig.addFilter("filterTagList", filterTagList)
@@ -51,20 +53,23 @@ module.exports = function(eleventyConfig) {
   eleventyConfig.addCollection("tagList", function(collection) {
     let tagSet = new Set();
     collection.getAll().forEach(item => {
-      (item.data.tags || []).forEach(tag => tagSet.add(tag));
+      (item.data.tags || []).forEach(tag => {
+        if (tag) {
+          tag = ''+tag;
+          tagSet.add(tag.toLowerCase());
+        }
+      })
     });
 
     return filterTagList([...tagSet]);
   });
-
-
 
   eleventyConfig.addCollection("projectList", function(collection) {
     let projectSet = new Set();
     collection.getAll().forEach(item => {
       let project = item.data.project;
       if (project) {
-        projectSet.add(project)
+        projectSet.add(''+project)
       }
     });
     return [...projectSet].sort();
@@ -127,6 +132,7 @@ module.exports = function(eleventyConfig) {
 
   eleventyConfig.addFilter("log", (...args) => {
     console.log(...args);
+    return args;
   });
 
   return {
