@@ -3,13 +3,13 @@
   <li class="postlist-item{% if post.url == url %} postlist-item-active{% endif %}">
     <a href="{{ post.url | url }}" class="postlist-link">{% if post.data.title %}{{ post.data.title }}{% else %}<code>{{ post.url }}</code>{% endif %}</a>
     <time class="postlist-date" datetime="{{ post.date | htmlDateString }}">{{ post.date | readableDate }}</time>
+    {% if post.data.project %}
+    <a class="project-batch" href="/project/{{post.data.project}}"><span class="project-label">Project: </span> <span class="project-code">{{ post.data.project }}</span></a>
+    {% endif %}
     {% for tag in post.data.tags | filterTagList %}
       {% set tagUrl %}/tags/{{ tag | slug }}/{% endset %}
       <a href="{{ tagUrl | url }}" class="post-tag">{{ tag }}</a>
     {% endfor %}
-    {% if post.data.project %}
-    <span class="project-batch"> <a href="/project/{{post.data.project}}">[Project: {{ post.data.project }}]</a> </span>
-    {% endif %}
   </li>
 {% endfor %}
 </ol>

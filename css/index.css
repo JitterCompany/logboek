@@ -3,9 +3,10 @@
   --lightgray: #e0e0e0;
   --gray: #C0C0C0;
   --darkgray: #333;
-  --navy: #17050F;
+  --navy: #484F5E;
   --blue: #082840;
   --white: #fff;
+  --jitterblue: #4484CE;
 }
 
 /* Global stylesheet */
@@ -34,9 +35,12 @@ p,
   line-height: 1.45;
 }
 a[href] {
-  color: var(--blue);
+  color: var(--jitterblue);
 }
-a[href]:visited {
+/* a[href]:visited {
+  color: var(--navy);
+} */
+a[href]:hover {
   color: var(--navy);
 }
 main {
@@ -244,4 +248,40 @@ a[href].direct-link:focus:visited,
 :hover > a[href].direct-link,
 :hover > a[href].direct-link:visited {
   color: #aaa;
+}
+
+
+.project-batch {
+
+  padding: 0 10px;
+
+}
+
+.project-batch .project-label {
+  padding: 4px;
+  color: white;
+  font-weight: 500;
+  text-shadow: 0px 2px 1px rgba(0, 0, 0, 0.4);
+  line-height: 20px;
+  min-height: 28px;
+  border-radius: 4px 0 0 4px;
+  background: #484F5E;
+}
+
+.project-batch .project-code {
+
+  padding: 4px;
+  color: white;
+  font-weight: 500;
+  text-shadow: 0px 2px 1px rgba(0, 0, 0, 0.4);
+  line-height: 20px;
+  min-height: 28px;
+  border-radius: 0 4px 4px 0;
+  background: var(--jitterblue);
+}
+
+
+a[href].project-batch:hover .project-code,
+a[href].project-batch:focus .project-code {
+  background-color: #3466a0;
 }
