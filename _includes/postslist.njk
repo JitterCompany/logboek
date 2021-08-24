@@ -8,7 +8,7 @@
       <a href="{{ tagUrl | url }}" class="post-tag">{{ tag }}</a>
     {% endfor %}
     {% if post.data.project %}
-    <span> [Project: {{ post.data.project }}] </span>
+    <span class="project-batch"> <a href="/project/{{post.data.project}}">[Project: {{ post.data.project }}]</a> </span>
     {% endif %}
   </li>
 {% endfor %}
