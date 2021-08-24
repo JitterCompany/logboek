@@ -9,7 +9,14 @@ const markdownItAnchor = require("markdown-it-anchor");
 module.exports = function(eleventyConfig) {
   // Add plugins
   eleventyConfig.addPlugin(pluginRss);
-  eleventyConfig.addPlugin(pluginSyntaxHighlight);
+  eleventyConfig.addPlugin(pluginSyntaxHighlight, {
+    init: function({ Prism }) {
+
+      Prism.languages.console = Prism.languages.extend('markup', {});
+      Prism.languages.terminal = Prism.languages.extend('markup', {});
+      console.log('init', Object.keys(Prism.languages))
+  }
+  });
   eleventyConfig.addPlugin(pluginNavigation);
 
   // https://www.11ty.dev/docs/data-deep-merge/
