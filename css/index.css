@@ -251,9 +251,9 @@ a[href].direct-link:focus:visited,
 }
 
 
-.project-batch {
+.postlist .project-batch {
 
-  padding: 0 10px;
+  margin: 0 10px;
 
 }
 
@@ -279,7 +279,6 @@ a[href].direct-link:focus:visited,
   border-radius: 0 4px 4px 0;
   background: var(--jitterblue);
 }
-
 
 a[href].project-batch:hover .project-code,
 a[href].project-batch:focus .project-code {

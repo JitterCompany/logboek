@@ -4,6 +4,12 @@ templateClass: tmpl-post
 ---
 <h1>{{ title }}</h1>
 
+<div style="margin: 16px 0">
+{% if project %}
+<a class="project-batch" href="/project/{{project}}"><span class="project-label">Project: </span> <span class="project-code">{{ project }}</span></a>
+{% endif %}
+</div>
+
 <time datetime="{{ page.date | htmlDateString }}">{{ page.date | readableDate }}</time>
 {%- for tag in tags | filterTagList -%}
 {%- set tagUrl %}/tags/{{ tag | slug }}/{% endset -%}
