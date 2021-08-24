@@ -135,6 +135,10 @@ module.exports = function(eleventyConfig) {
     return args;
   });
 
+  eleventyConfig.addFilter("filterdash", (string) => {
+      return string.replace(/[\-_]/g, ' ');
+  });
+
   return {
     // Control which files Eleventy will process
     // e.g.: *.md, *.njk, *.html, *.liquid

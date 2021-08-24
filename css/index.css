@@ -284,3 +284,14 @@ a[href].project-batch:hover .project-code,
 a[href].project-batch:focus .project-code {
   background-color: #3466a0;
 }
+
+
+.post-header {
+  display: flex;
+  justify-content: flex-start;
+  align-items: baseline;
+}
+
+.post-header h2 {
+  margin: 0 8px;
+}

@@ -14,9 +14,15 @@ permalink: /project/{{ (""+projectcode) | slug }}/
 {% set postslist = collections.projects[ projectcode ] %}
 
 {% for post in postslist %}
-<h2> {{ post.data.title }} </h2>
-<div>Date: {{ post.date }}</div>
-<div>tags: {{ post.data.tags | safe }}</div>
+<div class="post-header">
+  <time class="postlist-date" datetime="{{ post.date | htmlDateString }}">{{ post.date | readableDate }}</time>
+  <h2> {{ post.data.title | filterdash }} </h2>
+</div>
+<hr>
+{% for tag in post.data.tags | filterTagList %}
+  {% set tagUrl %}/tags/{{ tag | slug }}/{% endset %}
+  <a href="{{ tagUrl | url }}" class="post-tag">{{ tag }}</a>
+{% endfor %}
 {{ post.templateContent | safe }}
 {% endfor %}
 

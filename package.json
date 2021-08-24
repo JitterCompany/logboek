@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "Offering different views on jit logs",
   "scripts": {
+    "_prebuild": "./scripts/patch-and-move-logs.py",
     "build": "eleventy",
     "watch": "eleventy --watch",
     "serve": "eleventy --serve",
