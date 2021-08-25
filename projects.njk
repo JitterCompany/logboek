@@ -20,6 +20,12 @@ permalink: /project/{{ (""+projectcode) | slug }}/
 <img width="300px" src="/img/{{meta.clientlogo}}"/>
 
 <div>
+<span class="metalabel">Client:</span>
+{{meta.client}}
+</div>
+
+
+<div>
 <span class="metalabel">Duration:</span>
 {{ meta.startdate }} - {{meta.enddate}}
 </div>
