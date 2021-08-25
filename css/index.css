@@ -360,3 +360,10 @@ a[href].project-batch:focus .project-code {
 .toc ol li {
   margin: 16px;
 }
+
+h1.projectpageheader .metalabel {
+  color: var(--jitterblue);
+  /* background-color: var(--jitterblue);
+  color: white;
+  padding: 8px; */
+}

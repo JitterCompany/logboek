@@ -32,7 +32,7 @@ permalink: /project/{{ (""+projectcode) | slug }}/
 
 <div class="projectpagecontent">
 
-<h1><span class="metalabel">Project</span> {{ projectcode }}
+<h1 class="projectpageheader"><span class="metalabel">Project</span> {{ projectcode }}
 
   {% if projectsmetadata[projectcode] %}
     {% set meta = projectsmetadata[projectcode] %}
