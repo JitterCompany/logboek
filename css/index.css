@@ -37,15 +37,11 @@ p,
 a[href] {
   color: var(--jitterblue);
 }
-/* a[href]:visited {
-  color: var(--navy);
-} */
+
 a[href]:hover {
   color: var(--navy);
 }
-main {
-  /* padding: 1rem; */
-}
+
 main :first-child {
   margin-top: 0;
 }

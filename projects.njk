@@ -4,12 +4,31 @@ pagination:
   size: 1
   alias: projectcode
   addAllPagesToCollections: false
-layout: layouts/home.njk
+layout: layouts/projects.njk
 eleventyComputed:
   title: Project “{{ projectcode }}”
 permalink: /project/{{ (""+projectcode) | slug }}/
 ---
+
+{% set postslist = collections.projects[ projectcode ] %}
+
+<div class="projectwrapper">
+
 <div class="projectpage">
+
+<div class="postsinproject">
+{#
+  <ol>
+    {% for post in postslist %}
+
+    <li>
+    {{post.data.title}}
+    </li>
+    {% endfor %}
+
+  </ol> #}
+
+</div>
 
 <div class="projectpagecontent">
 
@@ -37,7 +56,6 @@ permalink: /project/{{ (""+projectcode) | slug }}/
 <span class="metalabel">Description:</span>
 {{meta.description}}
 </p>
-{% set postslist = collections.projects[ projectcode ] %}
 
 
 <h2>Project Log</h2>
@@ -45,6 +63,7 @@ permalink: /project/{{ (""+projectcode) | slug }}/
 <div class="projectlog">
 
   {% for post in postslist %}
+
   <div class="project-post">
     <div class="post-header">
       <time class="postlist-date" datetime="{{ post.date | htmlDateString }}">{{ post.date | readableDate }}</time>
@@ -62,14 +81,17 @@ permalink: /project/{{ (""+projectcode) | slug }}/
       {% endfor %}
     </div>
     {{ post.templateContent | safe }}
-    {% endfor %}
 
   </div>
+
+  {% endfor %}
 </div>
 
 {% include "postslist.njk" %}
 
 <p>See <a href="{{ '/projects/' | url }}">all projects</a>.</p>
+
+</div>
 
 </div>
 
