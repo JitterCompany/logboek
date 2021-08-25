@@ -9,6 +9,9 @@ eleventyComputed:
   title: Project “{{ projectcode }}”
 permalink: /project/{{ (""+projectcode) | slug }}/
 ---
+<div class="projectpage">
+
+<div class="projectpagecontent">
 
 <h1><span class="metalabel">Project</span> {{ projectcode }}
 
@@ -67,3 +70,7 @@ permalink: /project/{{ (""+projectcode) | slug }}/
 {% include "postslist.njk" %}
 
 <p>See <a href="{{ '/projects/' | url }}">all projects</a>.</p>
+
+</div>
+
+</div>

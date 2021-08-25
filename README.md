@@ -1,4 +1,7 @@
-# eleventy-base-blog
+# Jitter Logboek UI
+
+Engineering logbook rendering engine based on [11ty](https://www.11ty.dev)
+
 
 A starter repository showing how to build a blog with the [Eleventy](https://github.com/11ty/eleventy) static site generator.
 

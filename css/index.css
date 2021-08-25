@@ -44,7 +44,7 @@ a[href]:hover {
   color: var(--navy);
 }
 main {
-  padding: 1rem;
+  /* padding: 1rem; */
 }
 main :first-child {
   margin-top: 0;
@@ -315,4 +315,17 @@ a[href].project-batch:focus .project-code {
 
 .postmetabar img {
   margin-right: 8px;
+}
+
+.projectpage {
+  display: flex;
+  justify-content: center;
+  background-color: var(--lightgray);
+}
+
+.projectpagecontent {
+  padding: 10px;
+  background-color: white;
+
+  max-width: 900px;
 }
