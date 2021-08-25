@@ -11,8 +11,12 @@ eleventyNavigation:
 {% for project in collections.projectList %}
   {% set projectUrl %}/project/{{ (""+project) | slug }}/{% endset %}
 <li>
-  {{project}}
-  <a href="{{ projectUrl | url }}" class="post-tag">{{ project }}</a>
+
+  <a href="{{ projectUrl | url }}"> {{project}}
+  {% if projectsmetadata[project] %}
+  - {{ projectsmetadata[project].name }}</a>
+  - {{ projectsmetadata[project].description }}
+  {% endif %}
 </li>
 {% endfor %}
 <ul>

@@ -6,7 +6,7 @@ templateClass: tmpl-post
 
 <div style="margin: 16px 0">
 {% if project %}
-<a class="project-batch" href="/project/{{project}}"><span class="project-label">Project: </span> <span class="project-code">{{ project }}</span></a>
+<a class="project-batch" href="/project/{{project}}"><span class="project-label">Project: </span> <span class="project-code">{{ project }} - {{ projectsmetadata[project].name }}</span></a>
 {% endif %}
 </div>
 

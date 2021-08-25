@@ -292,6 +292,27 @@ a[href].project-batch:focus .project-code {
   align-items: baseline;
 }
 
-.post-header h2 {
+.post-header h2, h3 {
   margin: 0 8px;
+}
+
+.metalabel {
+  color: var(--gray);
+}
+
+.projectlog hr {
+  border-top: 1px solid var(--gray);
+}
+
+.project-post {
+  margin: 16px 0;
+}
+
+.postmetabar {
+  display: flex;
+  align-items: baseline;
+}
+
+.postmetabar img {
+  margin-right: 8px;
 }

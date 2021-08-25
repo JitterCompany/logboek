@@ -4,7 +4,7 @@
     <a href="{{ post.url | url }}" class="postlist-link">{% if post.data.title %}{{ post.data.title | filterdash }}{% else %}<code>{{ post.url }}</code>{% endif %}</a>
     <time class="postlist-date" datetime="{{ post.date | htmlDateString }}">{{ post.date | readableDate }}</time>
     {% if post.data.project %}
-    <a class="project-batch" href="/project/{{post.data.project}}"><span class="project-label">Project: </span> <span class="project-code">{{ post.data.project }}</span></a>
+    <a class="project-batch" href="/project/{{post.data.project}}"><span class="project-label">Project: </span> <span class="project-code">{{ post.data.project }} - {{ projectsmetadata[post.data.project].name }}</span></a>
     {% endif %}
     {% for tag in post.data.tags | filterTagList %}
       {% set tagUrl %}/tags/{{ tag | slug }}/{% endset %}
