@@ -7,6 +7,8 @@ const markdownIt = require("markdown-it");
 const markdownItAnchor = require("markdown-it-anchor");
 const pluginTOC = require('eleventy-plugin-toc')
 
+const searchFilter = require("./filters/searchFilter");
+
 module.exports = function(eleventyConfig) {
   // Add plugins
   eleventyConfig.addPlugin(pluginRss);
@@ -15,7 +17,6 @@ module.exports = function(eleventyConfig) {
 
       Prism.languages.console = Prism.languages.extend('markup', {});
       Prism.languages.terminal = Prism.languages.extend('markup', {});
-      console.log('init', Object.keys(Prism.languages))
   }
   });
   eleventyConfig.addPlugin(pluginNavigation);
@@ -149,11 +150,17 @@ module.exports = function(eleventyConfig) {
 
   eleventyConfig.addPassthroughCopy({"_data/img": "/img/meta"});
 
+  eleventyConfig.addPassthroughCopy({
+    "node_modules/elasticlunr/release/elasticlunr.min.js": "js/elasticlunr.min.js",
+  });
+
   eleventyConfig.addPlugin(pluginTOC, {
     tags: ['h2', 'h3'],
     wrapper: 'div'
   });
 
+  // add search
+  eleventyConfig.addFilter("search", searchFilter);
 
   return {
     // Control which files Eleventy will process

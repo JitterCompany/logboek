@@ -5,6 +5,15 @@ eleventyNavigation:
   order: 1
 ---
 
+<div class="field">
+  <label for="searchField">Search</label>
+  <input type="search" placeholder="Search..." id="searchField" />
+</div>
+<ol id="searchResults" ></ol>
+<div id="noResultsFound" style="display: none">
+  <p>No results found.</p>
+</div>
+
 {% set maxPosts = collections.posts.length | min(20) %}
 <h1>Latest {% if maxPosts == 1 %}Post{% else %}{{ maxPosts }} Posts{% endif %}</h1>
 
@@ -13,3 +22,54 @@ eleventyNavigation:
 {% include "postslist.njk" %}
 
 <p>More posts can be found in <a href="{{ '/posts/' | url }}">the archive</a>.</p>
+
+<!--Only 5.7kb GZipped. You may want to bundle this with your application code. -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/elasticlunr/0.9.6/elasticlunr.min.js"></script>
+{# <script src="{{ "/js/elasticlunr.min.js" | url }}"></script> #}
+
+<script>
+(function (window, document) {
+  "use strict";
+
+  const search = (e) => {
+    const results = window.searchIndex.search(e.target.value, {
+      bool: "OR",
+      expand: true,
+    });
+
+    const resEl = document.getElementById("searchResults");
+    const noResultsEl = document.getElementById("noResultsFound");
+    resEl.innerHTML = "";
+    if (results) {
+      noResultsEl.style.display = "none";
+      results.map((r) => {
+        console.log('res:', r);
+        const { id, title, description } = r.doc;
+        const el = document.createElement("li");
+        resEl.appendChild(el);
+
+        const h3 = document.createElement("h3");
+        el.appendChild(h3);
+
+        const a = document.createElement("a");
+        a.setAttribute("href", id);
+        a.textContent = title;
+        h3.appendChild(a);
+
+        const p = document.createElement("p");
+        p.textContent = description;
+        el.appendChild(p);
+      });
+    } else {
+      noResultsEl.style.display = "block";
+    }
+  };
+
+  fetch("/search-index.json").then((response) =>
+    response.json().then((rawIndex) => {
+      window.searchIndex = elasticlunr.Index.load(rawIndex);
+      document.getElementById("searchField").addEventListener("input", search);
+    })
+  );
+})(window, document);
+</script>
