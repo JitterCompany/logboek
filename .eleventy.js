@@ -64,8 +64,8 @@ module.exports = function(eleventyConfig) {
     collection.getAll().forEach(item => {
       (item.data.tags || []).forEach(tag => {
         if (tag) {
-          tag = ''+tag;
-          tagSet.add(tag.toLowerCase());
+          tag = (''+tag).toLowerCase();
+          tagSet.add(tag);
         }
       })
     });
