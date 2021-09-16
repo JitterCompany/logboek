@@ -150,6 +150,8 @@ module.exports = function(eleventyConfig) {
 
   eleventyConfig.addPassthroughCopy({"_data/img": "/img/meta"});
 
+  eleventyConfig.addPassthroughCopy({"logs/img": "/img/posts"});
+
   eleventyConfig.addPassthroughCopy({
     "node_modules/elasticlunr/release/elasticlunr.min.js": "js/elasticlunr.min.js",
   });
