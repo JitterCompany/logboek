@@ -284,7 +284,7 @@ a[href].project-batch:focus .project-code {
 
 .post-header {
   display: flex;
-  justify-content: flex-start;
+  justify-content: space-between;
   align-items: baseline;
 }
 

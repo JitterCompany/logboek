@@ -66,20 +66,16 @@ permalink: /project/{{ (""+projectcode) | slug }}/
 
   <div class="project-post">
     <div class="post-header">
+      <div style="display: flex; align-items: center;">
       <time class="postlist-date" datetime="{{ post.date | htmlDateString }}">{{ post.date | readableDate }}</time>
-      <h2> {{ post.data.title | filterdash }} </h2>
+      <h3> {{ post.data.title | filterdash }} </h3>
+      </div>
+      <div>
+        <img height="30px" width="30px" src="/img/meta/avatar_{{post.data.author}}.png" /> {{post.data.author}}
+      </div>
     </div>
     <hr>
 
-    <div class="postmetabar">
-
-      <img height="30px" width="30px" src="/img/meta/avatar_{{post.data.author}}.png" />
-      {{post.data.author}} |
-      {% for tag in post.data.tags | filterTagList %}
-        {% set tagUrl %}/tags/{{ tag | slug }}/{% endset %}
-        <a href="{{ tagUrl | url }}" class="post-tag">{{ tag }}</a>
-      {% endfor %}
-    </div>
     {{ post.templateContent | safe }}
 
   </div>
