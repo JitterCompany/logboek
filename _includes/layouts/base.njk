@@ -14,7 +14,7 @@
     <link rel="shortcut icon" href="/img/meta/favicon.png" />
   </head>
   <body>
-    <header>
+    <header class="no-print">
       <h1 class="home"><a href="{{ '/' | url }}">{{ metadata.title }}</a></h1>
 
       {#- Read more about `eleventy-navigation` at https://www.11ty.dev/docs/plugins/navigation/ #}
@@ -30,7 +30,7 @@
       {{ content | safe }}
     </main>
 
-    <footer></footer>
+    <footer class="no-print"></footer>
 
     <!-- Current page: {{ page.url | url }} -->
   </body>

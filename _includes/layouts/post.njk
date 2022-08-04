@@ -5,7 +5,7 @@ templateClass: tmpl-post
 
 <div class="post">
 
-<aside class="toc">
+<aside class="toc no-print">
   {{ content | toc | safe }}
 </aside>
 
@@ -31,7 +31,7 @@ templateClass: tmpl-post
 {%- set previousPost = collections.posts | getPreviousCollectionItem(page) %}
 {%- if nextPost or previousPost %}
 <hr>
-<ul>
+<ul class="no-print">
   {%- if nextPost %}<li>Next: <a href="{{ nextPost.url | url }}">{{ nextPost.data.title | filterdash }}</a></li>{% endif %}
   {%- if previousPost %}<li>Previous: <a href="{{ previousPost.url | url }}">{{ previousPost.data.title | filterdash }}</a></li>{% endif %}
 </ul>
