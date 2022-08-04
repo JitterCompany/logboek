@@ -247,13 +247,13 @@ a[href].direct-link:focus:visited,
 }
 
 
-.postlist .project-batch {
+.postlist .project-badge {
 
   margin: 0 10px;
 
 }
 
-.project-batch .project-label {
+.project-badge .project-label {
   padding: 4px;
   color: white;
   font-weight: 500;
@@ -264,7 +264,7 @@ a[href].direct-link:focus:visited,
   background: #484F5E;
 }
 
-.project-batch .project-code {
+.project-badge .project-code {
 
   padding: 4px;
   color: white;
@@ -276,8 +276,8 @@ a[href].direct-link:focus:visited,
   background: var(--jitterblue);
 }
 
-a[href].project-batch:hover .project-code,
-a[href].project-batch:focus .project-code {
+a[href].project-badge:hover .project-code,
+a[href].project-badge:focus .project-code {
   background-color: #3466a0;
 }
 
@@ -368,9 +368,39 @@ h1.projectpageheader .metalabel {
   padding: 8px; */
 }
 
-@media print {
+.do-print {
+  display: none;
+}
 
+@media print {
   .no-print {
     display: none;
+  }
+
+  .do-print {
+    display: inline;
+  }
+
+  .project-badge .project-label {
+    color: #484F5E;
+    text-shadow: none;
+    border-radius: none;
+    background: none;
+  }
+
+  .project-badge .project-code {
+    color: var(--jitterblue);;;
+    text-shadow: none;
+    border-radius: none;
+    background: none;
+  }
+
+  @page {
+    size: auto;   /* auto is the initial value */
+    margin: 0;  /* this affects the margin in the printer settings */
+  }
+
+  a {
+    text-decoration: none;
   }
 }

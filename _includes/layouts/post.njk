@@ -15,14 +15,15 @@ templateClass: tmpl-post
 
 <div style="margin: 16px 0">
 {% if project %}
-<a class="project-batch" href="/project/{{project}}"><span class="project-label">Project: </span> <span class="project-code">{{ project }} - {{ projectsmetadata[project].name }}</span></a>
+<a href="/project/{{project}}" class="no-print project-badge"><span class="project-label">Project: </span> <span class="project-code">{{ project }} - {{ projectsmetadata[project].name }}</span></a>
+<span class="project-badge do-print"><span class="project-label">Project: </span> <span class="project-code">{{ project }} - {{ projectsmetadata[project].name }}</span></span>
 {% endif %}
 </div>
 
 <time datetime="{{ page.date | htmlDateString }}">{{ page.date | readableDate }}</time>
 {%- for tag in tags | filterTagList -%}
 {%- set tagUrl %}/tags/{{ tag | slug }}/{% endset -%}
-<a href="{{ tagUrl | url }}" class="post-tag">{{ tag }}</a>
+<a href="{{ tagUrl | url }}" class="no-print post-tag">{{ tag }}</a>
 {%- endfor %}
 
 {{ content | safe }}
@@ -30,7 +31,7 @@ templateClass: tmpl-post
 {%- set nextPost = collections.posts | getNextCollectionItem(page) %}
 {%- set previousPost = collections.posts | getPreviousCollectionItem(page) %}
 {%- if nextPost or previousPost %}
-<hr>
+<hr class="no-print">
 <ul class="no-print">
   {%- if nextPost %}<li>Next: <a href="{{ nextPost.url | url }}">{{ nextPost.data.title | filterdash }}</a></li>{% endif %}
   {%- if previousPost %}<li>Previous: <a href="{{ previousPost.url | url }}">{{ previousPost.data.title | filterdash }}</a></li>{% endif %}
