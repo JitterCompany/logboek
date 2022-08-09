@@ -7,6 +7,7 @@
   --blue: #082840;
   --white: #fff;
   --jitterblue: #4484CE;
+  --color-neutral-muted: rgba(175, 184, 193, 0.2);
 }
 
 /* Global stylesheet */
@@ -61,10 +62,20 @@ table th {
   padding-right: 1em;
 }
 
+code {
+  padding: .2em .4em;
+  margin: 0;
+  font-size: 85%;
+  background-color: var(--color-neutral-muted);
+  border-radius: 6px;
+}
+
 pre,
 code {
-  font-family: Consolas, Menlo, Monaco, "Andale Mono WT", "Andale Mono", "Lucida Console", "Lucida Sans Typewriter", "DejaVu Sans Mono", "Bitstream Vera Sans Mono", "Liberation Mono", "Nimbus Mono L", "Courier New", Courier, monospace;
-  line-height: 1.5;
+  font-family: ui-monospace,SFMono-Regular,SF Mono,Menlo,Consolas,Liberation Mono,monospace;
+  font-size: 12px;
+  /* font-family: Consolas, Menlo, Monaco, "Andale Mono WT", "Andale Mono", "Lucida Console", "Lucida Sans Typewriter", "DejaVu Sans Mono", "Bitstream Vera Sans Mono", "Liberation Mono", "Nimbus Mono L", "Courier New", Courier, monospace; */
+  /* line-height: 1.5; */
 }
 pre {
   font-size: 14px;
