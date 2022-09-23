@@ -188,7 +188,8 @@ module.exports = function(eleventyConfig) {
     // -----------------------------------------------------------------
 
     // Pre-process *.md files with: (default: `liquid`)
-    markdownTemplateEngine: "njk",
+    // markdownTemplateEngine: "njk",
+    markdownTemplateEngine: false, // we don't want to preprocess markdown, because it will crash on {{ }} tags in code blocks
 
     // Pre-process *.html files with: (default: `liquid`)
     htmlTemplateEngine: "njk",
