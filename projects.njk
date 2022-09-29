@@ -57,6 +57,7 @@ permalink: /project/{{ (""+projectcode) | slug }}/
 {{meta.description}}
 </p>
 
+{% include "postslist.njk" %}
 
 <h2>Project Log</h2>
 
@@ -83,7 +84,6 @@ permalink: /project/{{ (""+projectcode) | slug }}/
   {% endfor %}
 </div>
 
-{% include "postslist.njk" %}
 
 <p>See <a href="{{ '/projects/' | url }}">all projects</a>.</p>
 
