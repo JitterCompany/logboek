@@ -4,6 +4,7 @@ const pluginRss = require("@11ty/eleventy-plugin-rss");
 const pluginSyntaxHighlight = require("@11ty/eleventy-plugin-syntaxhighlight");
 const pluginNavigation = require("@11ty/eleventy-navigation");
 const markdownIt = require("markdown-it");
+const mk = require("@traptitech/markdown-it-katex");
 const anchor = require('markdown-it-anchor')
 const pluginTOC = require('eleventy-plugin-toc')
 
@@ -116,7 +117,9 @@ module.exports = function(eleventyConfig) {
     linkify: true
   }).use(anchor, {
     permalink: anchor.permalink.headerLink()
-  })
+  }).use(mk,
+    {"blockClass": "math-block", "errorColor" : " #cc0000"}
+  );
 
   eleventyConfig.setLibrary("md", markdownLibrary);
 
