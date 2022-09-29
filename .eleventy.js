@@ -4,7 +4,6 @@ const pluginRss = require("@11ty/eleventy-plugin-rss");
 const pluginSyntaxHighlight = require("@11ty/eleventy-plugin-syntaxhighlight");
 const pluginNavigation = require("@11ty/eleventy-navigation");
 const markdownIt = require("markdown-it");
-const mathjaxPlugin = require("eleventy-plugin-mathjax");
 const anchor = require('markdown-it-anchor')
 const pluginTOC = require('eleventy-plugin-toc')
 
@@ -163,9 +162,6 @@ module.exports = function(eleventyConfig) {
 
   // add search
   eleventyConfig.addFilter("search", searchFilter);
-
-  // add math support using $...$ and $$...$$
-  eleventyConfig.addPlugin(mathjaxPlugin);
 
   return {
     // Control which files Eleventy will process
