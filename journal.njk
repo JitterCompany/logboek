@@ -1,0 +1,49 @@
+---
+pagination:
+    data: collections.journals
+    size: 1
+    alias: journalDesc
+    addAllPagesToCollections: false
+layout: layouts/projects.njk
+eleventyComputed:
+  title: Journal “{{ journalDesc.name }}”
+permalink: /project/{{journalDesc.project}}/journal/{{ (""+journalDesc.name) | slug }}/
+---
+
+{% set postslist = journalDesc.posts %}
+
+
+
+<div class="projectwrapper">
+
+<div class="projectpage">
+
+<div class="projectpagecontent">
+
+<h1> {{journalDesc.project}} - Journal: {{ journalDesc.name }}</h1>
+
+<div class="projectlog">
+
+  {% for post in postslist %}
+
+  <div class="project-post">
+    <div class="post-header">
+      <div style="display: flex; align-items: center;">
+      <time class="postlist-date" datetime="{{ post.date | htmlDateString }}">{{ post.date | readableDate }}</time>
+      </div>
+      <div>
+        <img height="30px" width="30px" src="/img/meta/avatar_{{post.data.author}}.png" /> {{post.data.author}}
+      </div>
+    </div>
+    <hr>
+
+    {{ post.templateContent | safe }}
+
+  </div>
+
+  {% endfor %}
+</div>
+
+</div>
+</div>
+</div>

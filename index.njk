@@ -14,8 +14,19 @@ eleventyNavigation:
   <p>No results found.</p>
 </div>
 
+<h2>Journals</h2>
+
+<ul>
+{% for project in collections.projectList %}
+  {{project}}
+  {%- for desc in collections.journalsPerProject[project] -%}
+    <li><a href="/project/{{desc.project}}/journal/{{ desc.name }}">{{ desc.name }}</a></li>
+  {%- endfor -%}
+{%- endfor -%}
+</ul>
+
 {% set maxPosts = collections.posts.length | min(20) %}
-<h1>Latest {% if maxPosts == 1 %}Post{% else %}{{ maxPosts }} Posts{% endif %}</h1>
+<h2>Latest {% if maxPosts == 1 %}Post{% else %}{{ maxPosts }} Posts{% endif %}</h2>
 
 {% set postslist = collections.posts | head(-20) %}
 {% set postslistCounter = collections.posts | length %}

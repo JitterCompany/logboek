@@ -11,24 +11,12 @@ permalink: /project/{{ (""+projectcode) | slug }}/
 ---
 
 {% set postslist = collections.projects[ projectcode ] %}
+{% set journals = collections.journalsPerProject[ projectcode ] %}
+
 
 <div class="projectwrapper">
 
 <div class="projectpage">
-
-<div class="postsinproject">
-{#
-  <ol>
-    {% for post in postslist %}
-
-    <li>
-    {{post.data.title}}
-    </li>
-    {% endfor %}
-
-  </ol> #}
-
-</div>
 
 <div class="projectpagecontent">
 
@@ -57,9 +45,17 @@ permalink: /project/{{ (""+projectcode) | slug }}/
 {{meta.description}}
 </p>
 
+<h2> Posts for project </h2>
+
 {% include "postslist.njk" %}
 
-<h2>Project Log</h2>
+<h2> Journals </h2>
+
+ {%- for desc in journals -%}
+  <li><a href="/project/{{desc.project}}/journal/{{ desc.name }}">{{ desc.name }}</a></li>
+{%- endfor -%}
+
+<h2> Full Project Log</h2>
 
 <div class="projectlog">
 

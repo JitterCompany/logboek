@@ -85,6 +85,84 @@ module.exports = function(eleventyConfig) {
     return [...projectSet].sort();
   });
 
+  eleventyConfig.addCollection("journals", function(collection) {
+
+    // Array of journal descriptors
+    // A journal descriptor contains a posts array
+    let journals = [];
+
+    collection.getFilteredByTag('journal').forEach(post => {
+
+      // Skip posts without journal keyword in frontmatter
+      if (!post.data.journal) {
+        return;
+      }
+
+      let journal = post.data.journal;
+      // Try to find journal descriptor
+      let desc = journals.find(desc => desc.name === journal);
+
+      // Create a journal descriptor if necessary
+      if (!desc) {
+        desc = {
+          name: journal,
+          project: post.data.project,
+          posts: []
+        };
+        journals.push(desc);
+      }
+
+      // Add current post to descriptor
+      desc.posts.push(post);
+
+    });
+
+    return journals;
+  });
+
+  eleventyConfig.addCollection("journalsPerProject", function(collection) {
+
+    // create empty collection based on an object
+    // Projects will be the keys
+    // Echh project's value will be an array of journal descriptors
+    // A journal descriptor contains a posts array
+    let journalsPerProject = {};
+
+    collection.getFilteredByTag('journal').forEach(post => {
+
+      // Skip posts without journal keyword in frontmatter
+      if (!post.data.journal) {
+        return;
+      }
+
+      // Create Project key
+      let project = post.data.project;
+      if (!(project in journalsPerProject)) {
+        journalsPerProject[project] = [];
+      }
+
+      let journal = post.data.journal;
+      // Try to find journal descriptor
+      let desc = journalsPerProject[project].find(desc => desc.name === journal);
+
+      // Create a journal descriptor if necessary
+      if (!desc) {
+        desc = {
+          name: journal,
+          project: post.data.project,
+          posts: []
+        };
+        journalsPerProject[project].push(desc);
+      }
+
+      // Add current post to descriptor
+      desc.posts.push(post);
+
+    });
+
+    return journalsPerProject;
+  });
+
   makeProjects = function(collection) {
     let projects = {};
 
@@ -146,9 +224,14 @@ module.exports = function(eleventyConfig) {
     return args;
   });
 
-  eleventyConfig.addFilter("filterdash", (string) => {
-      return string.replace(/[\-_]/g, ' ');
+  eleventyConfig.addFilter("filterdash", (s) => {
+    if (s) {
+      return s.replace(/[\-_]/g, ' ');
+    } else {
+      return 'unknown string';
+    }
   });
+
 
   eleventyConfig.addPassthroughCopy({"_data/img": "/img/meta"});
 
