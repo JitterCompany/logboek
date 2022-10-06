@@ -98,7 +98,7 @@ module.exports = function(eleventyConfig) {
         return;
       }
 
-      let journal = post.data.journal;
+      let journal = post.data.journal.toLowerCase();
       // Try to find journal descriptor
       let desc = journals.find(desc => desc.name === journal);
 
@@ -141,7 +141,7 @@ module.exports = function(eleventyConfig) {
         journalsPerProject[project] = [];
       }
 
-      let journal = post.data.journal;
+      let journal = post.data.journal.toLowerCase();;
       // Try to find journal descriptor
       let desc = journalsPerProject[project].find(desc => desc.name === journal);
 
