@@ -91,7 +91,7 @@ module.exports = function(eleventyConfig) {
     // A journal descriptor contains a posts array
     let journals = [];
 
-    collection.getFilteredByTag('journal').forEach(post => {
+    collection.getAll().forEach(post => {
 
       // Skip posts without journal keyword in frontmatter
       if (!post.data.journal) {
