@@ -45,15 +45,16 @@ permalink: /project/{{ (""+projectcode) | slug }}/
 {{meta.description}}
 </p>
 
-<h2> Posts for project </h2>
-
-{% include "postslist.njk" %}
-
 <h2> Journals </h2>
 
  {%- for desc in journals -%}
   <li><a href="/project/{{desc.project}}/journal/{{ desc.name }}">{{ desc.name }}</a></li>
 {%- endfor -%}
+
+<h2> Posts for project </h2>
+
+{% include "postslist.njk" %}
+
 
 <h2> Full Project Log</h2>
 

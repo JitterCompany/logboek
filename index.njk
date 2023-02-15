@@ -18,7 +18,6 @@ eleventyNavigation:
 
 <ul>
 {% for project in collections.projectList %}
-  {{project}}
   {%- for desc in collections.journalsPerProject[project] -%}
     <li><a href="/project/{{desc.project}}/journal/{{ desc.name }}">{{ desc.name }}</a></li>
   {%- endfor -%}
