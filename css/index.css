@@ -96,9 +96,7 @@ pre {
   margin: .5em 0;
   background-color: #f6f6f6;
 }
-code {
-  word-break: break-all;
-}
+
 .highlight-line {
   display: block;
   padding: 0.125em 1em;
